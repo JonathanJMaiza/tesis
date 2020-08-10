@@ -1,0 +1,38 @@
+<div>
+  <form (ngSubmit)="login( f )"  #f="ngForm">
+
+
+    <mat-card class="example-card">
+        <mat-card-title>Iniciar Sesión</mat-card-title>
+        <mat-form-field appearance="legacy">
+            <mat-label>Correo</mat-label>
+            <input matInput type="email" placeholder="Ingrese su correo" name="email" [(ngModel)]="usuario.email" required >
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="legacy">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Ingrese su contraseña" name="password" [(ngModel)]="usuario.password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+            <mat-hint routerLink="/clave" align="end">Olvidaste tu constraseña?</mat-hint>
+
+        </mat-form-field>
+
+        <br>
+        <mat-card-actions>
+            <mat-checkbox color="primary">Recordar!</mat-checkbox>
+            <button mat-raised-button color="primary" name="button" type="submit">Ingresar</button>
+            <button mat-raised-button color="primary" routerLink="/registro" name="button">Registrarse</button>
+        </mat-card-actions>
+
+        <mat-card-subtitle>O ingrese mediante</mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-mini-fab color="primary" type="button" ><mat-icon  (click)="loginFacebook()" svgIcon="prueba" aria-hidden="false" aria-label="icon" class="svg"></mat-icon></button>
+            <button mat-mini-fab color="primary" type="button"><mat-icon  (click)="loginGoogle()" svgIcon="gmail" aria-hidden="false" aria-label="icon" class="svg"></mat-icon></button>
+            <button mat-mini-fab color="primary" type="button"><mat-icon  svgIcon="outlook" aria-hidden="false" aria-label="icon" class="svg"></mat-icon></button>
+        </mat-card-actions>
+
+    </mat-card>
+</form>
+</div>

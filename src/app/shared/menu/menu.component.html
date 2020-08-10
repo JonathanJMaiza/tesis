@@ -1,0 +1,67 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>ESFOT </span>
+  <div class="">
+  <input type="text" class="text-center" placeholder="Buscas alguna noticia?">
+  </div>
+  <span class="example-spacer"></span>
+
+  <span>{{user$ |async}}</span>
+  <div class="">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Editar Usuario</span>
+    </button>
+    <button mat-menu-item (click)="salir()">
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+  </div>
+</mat-toolbar>
+<p *ngIf="user$ | async as user">
+  {{user.email}}
+</p>
+
+<!--<mat-toolbar color="primary" class="alto">
+    <span>ESFOT</span>
+
+    <mat-form-field appearance="outline" appearance="outline">
+        <input matInput placeholder="Buscar">
+        <mat-icon matSuffix color="primary">search</mat-icon>
+    </mat-form-field>
+    <div>
+      <button mat-icon-button class="white-icon">
+          <mat-icon>group</mat-icon>
+        </button>
+
+    <!--<button mat-icon-button class="ejemplo">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-icon-button class="white-icon">
+          <mat-icon>group</mat-icon>
+        </button>
+      </div>
+    <h1>{{user?.name}}</h1>
+
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+    </div>
+</mat-toolbar>-->
+
+
+<app-sidenav></app-sidenav>
