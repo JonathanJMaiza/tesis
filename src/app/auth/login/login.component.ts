@@ -1,28 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { NgForm } from '@angular/forms';
 import { Usuario } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router} from '@angular/router';
 
 
+=======
+import {MaterialService} from '../../services/material.service';
+import { NgForm } from '@angular/forms';
+import { UsuarioModel } from 'src/app/models/usuario.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router} from '@angular/router';
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+<<<<<<< HEAD
   hide = false;
   mensaje=false;
   errorUser=false;
   usuario: Usuario = new Usuario();
   usuarioparse:Usuario=new Usuario();
   constructor(
+=======
+  hide = true;
+  usuario: UsuarioModel = new UsuarioModel();
+
+  constructor(private _material:MaterialService,
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
               private auth:AuthService,
               private router:Router) { }
 
   ngOnInit(): void {
   }
 async login( form: NgForm ) {
+<<<<<<< HEAD
   if(form.invalid){
     Object.values(form.controls).forEach(control=>{
         console.log(control);
@@ -77,11 +93,20 @@ async login( form: NgForm ) {
               */
           }
         )
+=======
+  try{
+    const user= await this.auth.login(this.usuario);
+      if(user && user.user.emailVerified){
+        this.router.navigate(['/menu']);
+      }else if(user){
+        this.router.navigate(['/emailverification']);
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
       }else{
         this.router.navigate(['/registro']);
       }
 
   }catch(err){
+<<<<<<< HEAD
 
     if(err=="Error: The password is invalid or the user does not have a password."){
         this.mensaje=true;
@@ -150,11 +175,29 @@ async login( form: NgForm ) {
           }
         )
       }
+=======
+    console.log(err);
+  }
+
+  }
+  loginGoogle(){
+    try{
+      this.auth.loginGoogle();
     }catch(err){
       console.log(err)
     }
   }
 
+  loginFacebook(){
+    try{
+      this.auth.loginFacebook();
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+<<<<<<< HEAD
   tipodeUsuario(usuario:Usuario){
     //firstLogin
     if(usuario.rol=="administrador"){
@@ -172,4 +215,6 @@ async login( form: NgForm ) {
     }
   }
 
+=======
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 }

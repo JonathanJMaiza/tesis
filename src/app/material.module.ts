@@ -14,6 +14,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
+<<<<<<< HEAD
 import {MatDividerModule} from '@angular/material/divider';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatRadioModule} from '@angular/material/radio';
@@ -24,6 +25,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+=======
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 @NgModule({
   imports: [
     HttpClientModule,
@@ -40,6 +43,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatSidenavModule,
     MatAutocompleteModule,
     MatMenuModule,
+<<<<<<< HEAD
     MatTabsModule,
     MatBadgeModule,
     MatRadioModule,
@@ -51,6 +55,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatStepperModule,
     MatGridListModule,
     ScrollingModule
+=======
+    MatTabsModule
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   ],
   declarations: [],
   providers: [
@@ -70,6 +77,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatSidenavModule,
     MatAutocompleteModule,
     MatMenuModule,
+<<<<<<< HEAD
     MatTabsModule,
     MatBadgeModule,
     MatRadioModule,
@@ -82,6 +90,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatStepperModule,
     MatGridListModule,
     ScrollingModule
+=======
+    MatTabsModule
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   ]
 })
 export class MaterialModule {

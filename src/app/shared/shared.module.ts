@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
+<<<<<<< HEAD
 import { CalendarComponent } from './calendar/calendar.component';
 import {MaterialModule} from './../material.module';
 import {AppRoutingModule} from './../app-routing.module'
@@ -40,6 +41,24 @@ import { YouTubePlayerModule } from '@angular/youtube-player'
     DocumentosComponent ,
     YouTubePlayerModule
 
+=======
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import {MaterialModule} from './../material.module';
+import {AppRoutingModule} from './../app-routing.module'
+
+@NgModule({
+  declarations: [MenuComponent, SidenavComponent, CalendarComponent],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    AppRoutingModule
+  ],
+  exports:[
+    MenuComponent,
+    SidenavComponent,
+    CalendarComponent
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   ]
 })
 export class SharedModule { }

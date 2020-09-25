@@ -16,7 +16,10 @@ public user$:Observable<any>=this.auth.AFauth.user;
     try{
       this.auth.sendVerificationEmail();
     }catch(err){
+<<<<<<< HEAD
       console.log('entra al error email')
+=======
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
       console.log(err)
     }
 

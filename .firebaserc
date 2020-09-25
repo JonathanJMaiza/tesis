@@ -7,8 +7,13 @@
         ]
       }
     }
+<<<<<<< HEAD
   },
   "projects": {
     "default": "noticias-esfot"
   }
 }
+=======
+  }
+}
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472

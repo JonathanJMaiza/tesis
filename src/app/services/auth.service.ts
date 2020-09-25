@@ -3,24 +3,37 @@ import { AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import {auth} from 'firebase/app'
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { first, map, filter } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { Observable } from 'rxjs';
 import { FileItem } from '../models/file-item';
 import * as firebase from 'firebase';
+=======
+import { first } from 'rxjs/operators';
+import { UsuarioModel } from '../models/usuario.model';
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+<<<<<<< HEAD
   public storageRef=firebase.storage().ref();
 userRef:AngularFirestoreDocument<Usuario>;
 usu: Observable<Usuario>;
 public usuario=new Usuario();
+=======
+
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   constructor(public AFauth: AngularFireAuth, private db:AngularFirestore,
     private router:Router) { }
 
 
+<<<<<<< HEAD
     async login(usuario:Usuario){
+=======
+    async login(usuario:UsuarioModel){
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 
     const authData = {
       ...usuario,
@@ -30,6 +43,7 @@ public usuario=new Usuario();
     //const obser=from(this.AFauth.signInWithEmailAndPassword(authData.email, authData.password));
     //  return obser;
     }
+<<<<<<< HEAD
 /*
     async registerNuevo(usuario:Usuario){
       const authData = {
@@ -58,11 +72,21 @@ public usuario=new Usuario();
         authData.usuario_verificado=false;
       }
       */
+=======
+
+    async register(usuario:UsuarioModel){
+      const authData = {
+        ...usuario,
+      };
+      //console.log(authData.email);
+      //console.log(authData.password);
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
       const result= await this.AFauth.createUserWithEmailAndPassword(authData.email, authData.password).then(
         resp=>{
           console.log(resp.user.uid);
           console.log(authData.genero)
            this.db.doc(`usuarios/${resp.user.uid}`).set({
+<<<<<<< HEAD
             uid:resp.user.uid,
             email : authData.email,
             nombre: authData.nombre,
@@ -98,26 +122,63 @@ public usuario=new Usuario();
     }catch(error){
       return error
     }
+=======
+            email : authData.email,
+            nombre: authData.nombre,
+            apellido: authData.apellido,
+            fec_nac: authData.fechanacimiento,
+            rol:'Estudiante',
+            genero:authData.genero,
+
+        }
+
+      );
+      return result;
+    });
+      await this.sendVerificationEmail();
+      this.router.navigate(['/emailverification']);
+      return result;
+  }
+
+    async sendVerificationEmail(): Promise<void> {
+   return (await this.AFauth.currentUser).sendEmailVerification();
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
  }
 
  async logout(){
   await this.AFauth.signOut();
  }
+<<<<<<< HEAD
  //ESTE YA NO SE USA MUCHO
+=======
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   async getCurrentUser(){
     return this.AFauth.authState.pipe(first()).toPromise();
   }
 
+<<<<<<< HEAD
   async resetPass(email:string){
 
         const result= await this.AFauth.sendPasswordResetEmail(email);
         return result;
 
+=======
+  async resetPass(email:string):Promise<void>{
+      try{
+        const result= await this.AFauth.sendPasswordResetEmail(email);
+      }catch(err){
+        console.log(err)
+      }
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   }
 
   async loginGoogle(){
     try{
+<<<<<<< HEAD
       return (await this.AFauth.signInWithPopup( new auth.GoogleAuthProvider()))
+=======
+      return this.AFauth.signInWithPopup( new auth.GoogleAuthProvider());
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
     }catch(err){
       console.log(err);
     }
@@ -130,6 +191,7 @@ public usuario=new Usuario();
       console.log(err);
     }
   }
+<<<<<<< HEAD
   async borrarCuenta(){
     try{
       return (await this.AFauth.currentUser).delete()
@@ -348,4 +410,6 @@ updateUserwithImg(){
 
 }
 
+=======
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 }

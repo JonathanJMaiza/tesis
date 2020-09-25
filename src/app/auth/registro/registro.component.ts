@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+<<<<<<< HEAD
 import { Usuario } from 'src/app/models/usuario.model';
 import { FormGroup,Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidadoresService } from 'src/app/services/validadores.service';
+=======
+import { UsuarioModel } from 'src/app/models/usuario.model';
+import { FormGroup,Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+<<<<<<< HEAD
   entra=false;
   color=false;
   hide = false;
@@ -19,11 +26,18 @@ export class RegistroComponent implements OnInit {
   constructor(private auth:AuthService,private fb:FormBuilder,
               private router:Router,
               private validaciones:ValidadoresService) {
+=======
+  forma: FormGroup;
+  usuario: UsuarioModel = new UsuarioModel();
+  constructor(private auth:AuthService,private fb:FormBuilder,
+              private router:Router) {
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
     this.crearFormulario()
    }
 
   ngOnInit(): void {
   }
+<<<<<<< HEAD
   get nombreNoValido(){
   return this.forma.get('nombre').invalid && this.forma.get('nombre').touched
   }
@@ -53,6 +67,8 @@ export class RegistroComponent implements OnInit {
       return (password==password1)? false: true;
   }
 
+=======
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   crearFormulario(){
     this.forma=this.fb.group({
       //nombre  :['valor','validadores sincronos','validadrores asincronos'],
@@ -60,6 +76,7 @@ export class RegistroComponent implements OnInit {
       apellido:['',[Validators.required]],
       email  :['',[Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
       genero: ['',Validators.required],
+<<<<<<< HEAD
       //carrera: ['',Validators.required],
       fechanacimiento:['',[Validators.required]],
       rol:['',Validators.required],
@@ -138,5 +155,27 @@ export class RegistroComponent implements OnInit {
    }else{
 
    }
+=======
+      carrera: ['',Validators.required],
+      fechanacimiento:['',[Validators.required]],
+      password   :['',Validators.required],
+      password1   :['', Validators.required],
+
+
+   });}
+
+
+
+ async register(forma:FormGroup){
+   try{
+       const user= await this.auth.register(this.usuario);
+       if(user){
+         this.router.navigate['/emailverification']
+       }
+   }catch(err){
+     console.log(err);
+   }
+
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
  }
 }

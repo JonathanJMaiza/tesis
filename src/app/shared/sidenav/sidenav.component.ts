@@ -1,15 +1,20 @@
+<<<<<<< HEAD
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { Usuario } from 'src/app/models/usuario.model';
 import { map } from 'rxjs/internal/operators/map';
 
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
+<<<<<<< HEAD
 
 export class SidenavComponent implements OnInit {
 @Input()user:Usuario;
@@ -66,4 +71,13 @@ probaar(){
   console.log('si entra');
   this.auth.probar().subscribe(resp=>console.log(resp))
 }
+=======
+export class SidenavComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .sidebar{
   position: sticky;
@@ -98,3 +99,8 @@ display:none;
       margin: 0!important;
   }
 }
+=======
+.ancho {
+    width: 25%;
+}
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472

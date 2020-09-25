@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <div class="contenedor">
 <div class="card mt-5 sombreado" *ngIf="user$ |async as user; else loading">
+=======
+<div class="card mt-5" *ngIf="user$ |async as user; else loading">
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
   <div class="card-body">
     <h3 class="card-title text-center">Gracias por Registrarte a ESFOT NOTICIAS!</h3>
     <div class="form-group mt-2">
@@ -18,7 +22,11 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 </div>
+=======
+<p>{{user$ | async |json}}</p>
+>>>>>>> f2e46ff82be4fdccc9ac2b193db0cd5657e04472
 <ng-template #loading>
   Loading....
 </ng-template>
