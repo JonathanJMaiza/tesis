@@ -1,0 +1,118 @@
+<!--<ul class="sidebar">
+  <li><a href="#"><i class="fas fa-users"></i>Usuarios</a></li>
+  <li><a href="#"><i class="fas fa-newspaper"></i>Noticias</a></li>
+  <li><a href="#"><i class="far fa-calendar-check"></i>Eventos</a></li>
+  <li><a href="#"><i class="fas fa-chart-bar"></i>Estadísticas</a></li>
+</ul>-->
+<!--Menu Usuario-->
+<!--<div class="side ">-->
+
+
+<div class="side">
+
+
+
+
+<li class="list-group-item  d-none d-md-block w-100" style="color:#0372ff">{{user.rol|uppercase}}</li>
+<a routerLink="noticias"  class="list-group-item w-100 " style="text-decoration:none"><i class="fas fa-home"></i>Inicio</a>
+<mat-expansion-panel hideToggle class="w-99" *ngIf="user.rol=='administrador'" [expanded]="step === 0" (opened)="setStep(0)">
+  <mat-expansion-panel-header class="probar">
+    <mat-panel-title class="probar"><i class="fas fa-user"></i>
+      Usuarios
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-divider></mat-divider>
+  <a routerLink="nuevo"  class="link" ><i class="fas fa-user-plus"></i>Crear</a>
+  <mat-divider></mat-divider>
+  <a routerLink="modificar" class="link"><i class="fas fa-user-edit"></i>Modificar</a>
+  <mat-divider></mat-divider>
+</mat-expansion-panel>
+
+<!--Menu Noticias-->
+
+<mat-expansion-panel hideToggle class="w-99" [expanded]="step === 1" (opened)="setStep(1)">
+  <mat-expansion-panel-header class="probar">
+    <mat-panel-title class="probar"><i class="fas fa-newspaper"></i>
+      Noticias
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-divider></mat-divider>
+  <!--<a routerLink="crearnoticias" class="link" ><i class="fas fa-plus-square"></i>Crear</a>-->
+  <a [routerLink]="['crearnoticias', user.uid]" class="link" ><i class="fas fa-plus-square"></i>Crear</a>
+  <mat-divider></mat-divider>
+  <a href="#" class="link"><i class="fas fa-cog"></i>Modificar</a>
+  <mat-divider></mat-divider>
+</mat-expansion-panel>
+
+<!--Menu Eventos-->
+
+<mat-expansion-panel hideToggle class="w-99" *ngIf="user.rol!='estudiante'" [expanded]="step === 2" (opened)="setStep(2)">
+  <mat-expansion-panel-header class="probar">
+    <mat-panel-title class="probar"><i class="far fa-calendar-check"></i>
+      Eventos
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-divider></mat-divider>
+  <a routerLink="eventos" class="link" ><i class="fas fa-plus-square"></i>Crear</a>
+  <mat-divider></mat-divider>
+  <a href="#" class="link"><i class="fas fa-cog"></i>Modificar</a>
+  <mat-divider></mat-divider>
+</mat-expansion-panel>
+
+<!--Menu Problemas-->
+<mat-expansion-panel hideToggle class="w-99" *ngIf="user.rol=='secretaria' || user.rol=='aeesfot'" [expanded]="step === 3" (opened)="setStep(3)">
+  <mat-expansion-panel-header class="probar">
+    <mat-panel-title class="probar"><i class="fas fa-exclamation-circle"></i>
+      Problemas
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-divider></mat-divider>
+  <a routerLink="eventos" class="link" ><i class="fas fa-plus-square"></i>Crear</a>
+  <mat-divider></mat-divider>
+  <a href="#" class="link"><i class="fas fa-cog"></i>Modificar</a>
+  <mat-divider></mat-divider>
+</mat-expansion-panel>
+<!--Menu Grupos-->
+<mat-expansion-panel hideToggle class="w-99" *ngIf="user.rol=='secretaria'|| user.rol=='docente'|| user.rol=='estudiante'" [expanded]="step === 4" (opened)="setStep(4)">
+  <mat-expansion-panel-header class="probar">
+    <mat-panel-title class="probar"><i class="fas fa-user-friends"></i>
+      Grupos
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-divider></mat-divider>
+  <a routerLink="eventos" class="link" ><i class="fas fa-plus-square"></i>Crear</a>
+  <mat-divider></mat-divider>
+  <a href="#" class="link"><i class="fas fa-cog"></i>Modificar</a>
+  <mat-divider></mat-divider>
+</mat-expansion-panel>
+
+<!--Menu Estadísticas-->
+
+<mat-expansion-panel hideToggle class="w-99" *ngIf="user.rol!='estudiante'" [expanded]="step === 5" (opened)="setStep(5)">
+  <mat-expansion-panel-header class="probar">
+    <mat-panel-title class="probar"><i class="fas fa-chart-bar"></i>
+      Estadísticas
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-divider></mat-divider>
+  <a href="#" class="link" ><i class="fas fa-plus-square"></i>Crear</a>
+  <mat-divider></mat-divider>
+  <a href="#" class="link"><i class="fas fa-cog"></i>Modificar</a>
+  <mat-divider></mat-divider>
+</mat-expansion-panel>
+
+</div>
+
+
+<!--</div>-->
+<div class="row">
+<div class="list-group list-group-horizontal ocultar-div">
+  <li><a href="#"  class="list-group-item"><i class="fas fa-home"></i></a></li>
+  <li><a href="#"  class="list-group-item"><i class="fas fa-users"></i></a></li>
+  <li><a href="#"  class="list-group-item"><i class="fas fa-newspaper"></i></a></li>
+  <li><a href="#"  class="list-group-item" ><i class="far fa-calendar-check"></i></a></li>
+  <li><a href="#"  class="list-group-item"><i class="fas fa-exclamation-triangle"></i></a></li>
+  <li><a href="#"  class="list-group-item"><i class="fas fa-chart-bar"></i></a></li>
+</div>
+
+</div>

@@ -1,0 +1,11 @@
+
+<!--
+<cdk-virtual-scroll-viewport itemSize="800px"  class="list-container">
+
+    <app-noticia [cabecera]="cabecera" *cdkVirtualFor="let cabecera of cabeceras, let i=index" [index]="i" ></app-noticia>
+
+</cdk-virtual-scroll-viewport>
+-->
+<div class="fondo w-100">
+  <app-noticia [cabecera]="cabecera" *ngFor="let cabecera of cabeceras, let i=index" [index]="i" ></app-noticia>
+</div>

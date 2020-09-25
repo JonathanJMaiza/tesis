@@ -1,0 +1,188 @@
+<div class="contenidos">
+<mat-horizontal-stepper class="contenidos"  #stepper>
+  <form [formGroup]="firstFormGroup"  (ngSubmit)="onUpload(firstFormGroup)" #formone="ngForm">
+  <mat-step [stepControl]="firstFormGroup">
+    <!--<form [formGroup]="firstFormGroup">-->
+      <ng-template matStepLabel>Cabecera Noticia</ng-template>
+      <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Titulo de la Noticia</mat-label>
+          <input matInput type="text" placeholder="Ingrese el titulo" formControlName="titulo_cabecera" [(ngModel)]="cabecera.titulo_cabecera"  required>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Descripción de la noticia</mat-label>
+           <textarea matInput rows="2" placeholder="Descripción del evento" [(ngModel)]="cabecera.descrip_cabecera" formControlName="descrip_cabecera" style="resize: none" required></textarea>
+      </mat-form-field>
+      <app-imagenes (messageEvent)="portada($event)" [cantidad]="1"></app-imagenes>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    <!--</form>-->
+  </mat-step>
+  <mat-step [stepControl]="firstFormGroup">
+  <!--<mat-step [stepControl]="secondFormGroup">-->
+    <!--<form [formGroup]="secondFormGroup">-->
+      <ng-template matStepLabel>Cuerpo Noticia</ng-template>
+      <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Detalle de la noticia</mat-label>
+           <textarea matInput rows="5" placeholder="Detalle de la noticia" [(ngModel)]="noticias.detalle_cuerpo" formControlName="cuerpo_noticia" style="resize: none" required></textarea>
+      </mat-form-field>
+      <mat-label>Eliga las imagenes que quiere agregar</mat-label>
+      <app-imagenes (messageEvent)="cuerpo($event)" [cantidad]="5"></app-imagenes>
+      <mat-label>Eliga los documentos que quiere agregar</mat-label>
+      <app-documentos (messageEvent)="documents($event)" [cantidad]="5"></app-documentos>
+
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Link Youtube</th>
+                <th>Borrar</th>
+              </tr>
+            </thead>
+            <tbody  formArrayName="nyoutubelinks">
+              <tr *ngFor="let control of nyoutubelinks.controls, let i=index">
+              <td>{{i+1}}</td>
+              <td>
+                <mat-form-field class="tama">
+                  <mat-label>Link de youtube</mat-label>
+                  <input type="url" [formControlName]="i" matInput placeholder="url"  required>
+
+                </mat-form-field>
+
+
+
+
+                  <!--<input type="url"
+                        class="form-control"
+                        [formControlName]="i" required>-->
+              </td>
+              <td>
+                <button type="button" name="button"
+                class="btn btn-danger"
+                (click)="borrarLinkYoutube(i)">Borrar</button>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" name="button"
+          class="btn btn-primary btn-block mt-3 mb-5"
+          (click)="agregarLinkYoutube()">+ Agregar</button>
+        </div>
+
+      </div>
+
+
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    <!--</form>-->
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Finalizar</ng-template>
+    <p>Ha finalizado el formulario</p>
+
+    <!--<youtube-player
+  videoId="mJrAHll5zXE"
+  suggestedQuality="highres"
+  [height]="250"
+  [width]="500"
+  [startSeconds]="4"
+  [endSeconds]="8">
+</youtube-player>-->
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()" #reset>Reset</button>
+      <button mat-button   (click)="formone.ngSubmit.emit()">Guardar</button>
+    </div>
+  </mat-step>
+  </form>
+</mat-horizontal-stepper>
+
+  </div>
+
+<!--<mat-horizontal-stepper  #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Portada de la Noticia</ng-template>
+      <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Titulo de la Noticia</mat-label>
+          <input matInput type="text" placeholder="Ingrese el titulo" formControlName="ntitulo" [(ngModel)]="encabezado_noticias.ntitulo"  required>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Descripción de la noticia</mat-label>
+
+           <textarea matInput rows="2" placeholder="Descripción del evento" [(ngModel)]="encabezado_noticias.ndescription" formControlName="ndescription" style="resize: none" required></textarea>
+      </mat-form-field>
+          <app-imagenes (messageEvent)="portada($event)" [cantidad]="1"></app-imagenes>-->
+      <!--<div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Cuerpo Noticia</ng-template>
+      <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Detalle de la noticia</mat-label>
+           <textarea matInput rows="5" placeholder="Detalle de la noticia" [(ngModel)]="encabezado_noticias.ndescription" formControlName="ndetalle" style="resize: none" required></textarea>
+      </mat-form-field>
+          <mat-label>Eliga las imagenes que quiere agregar</mat-label>
+          <app-imagenes (messageEvent)="cuerpo($event)" [cantidad]="5"></app-imagenes>
+          <mat-label>Eliga los documentos que quiere agregar</mat-label>
+          <app-documentos (messageEvent)="documents($event)" [cantidad]="5"></app-documentos>
+<!--
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Pasatiempo</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="nyoutubelinks">
+          <tr *ngFor="let control of nyoutubelinks.controls, let i=index">
+          <td>{{i+1}}</td>
+          <td>
+            <input type="text"
+                    class="form-control"
+                    [formControlName]="i">
+          </td>
+          <td>
+            <button type="button" name="button"
+            class="btn btn-danger"
+            (click)="borrarLinkYoutube(i)">Borrar</button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" name="button"
+      class="btn btn-primary btn-block mt-3 mb-5"
+      (click)="agregarLinkYoutube()">+ Agregar</button>
+    </div>
+
+  </div>
+  -->
+      <!--<div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finalizar</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>-->

@@ -1,0 +1,36 @@
+<!--
+<mat-grid-list cols="4" rowHeight="9.86%" style="overflow-y: scroll;">
+  <mat-grid-tile style="background-color:#FF0000;" colspan="4" rowspan="1">
+    <app-menu class="valor" *ngIf="user$ | async as user"></app-menu>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="9" style="background-color:lightpink;" >
+      <app-sidenav   [user]='usuario' *ngIf="user$ | async as user" ></app-sidenav>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="9" style="background-color:lightblue;" >
+    <router-outlet  class="valor w-100"></router-outlet>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="9" style="background-color:lightgreen;" >4
+  </mat-grid-tile>
+</mat-grid-list>
+-->
+
+<body>
+  <div class="menu col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+  <app-menu *ngIf="user$ | async as user"></app-menu>
+
+  </div>
+  <div class="contenido row"  *ngIf="user$ | async as user">
+
+    <div class= "sidenav col-xs-12 col-sm-3 col-md-3 col-lg-2 col-xl-2">
+      <app-sidenav   [user]='usuario' *ngIf="user$ | async as user" ></app-sidenav>
+    </div>
+    <div  class=" col-xs-12 col-sm-9 col-md-9 col-lg-7 col-xl-7 ">
+        <router-outlet class="valor"></router-outlet>
+    </div>
+
+    <div class="d-none d-lg-block  col-lg-3 col-xl-3">
+    <h1>Calendar</h1>
+    </div>
+  </div>
+</body>

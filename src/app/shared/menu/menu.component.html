@@ -1,0 +1,56 @@
+<mat-toolbar color="primary">
+
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <i class="fab fa-earlybirds" style="font-size:25px"></i>
+            </button>
+<span class="d-none d-lg-block">ESFOT</span>
+
+
+<!--<div class="input-group d-none d-lg-block">
+  <input type="text" class="search" placeholder="Buscar?" aria-label="Recipient's username">
+      <div class="elementos">
+        <button class="buscar" type="button"><i class="fas fa-search"></i></button>
+      </div>
+</div>-->
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Buscar?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+  </div>
+</div>
+
+  <span *ngIf="user$ | async as user"  class="d-none d-lg-block">{{user.displayName}}</span>
+  <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+    <!-- Include text description of the icon's meaning for screen-readers -->
+    <span class="cdk-visually-hidden">
+      Example with a home icon with overlaid badge showing the number 15
+    </span>
+
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>list</mat-icon>
+    </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Editar Usuario</span>
+    </button>
+      <!--<button mat-menu-item (click)="salir()">-->
+    <button mat-menu-item (click)="salir()">
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
+    </button>
+    <button mat-menu-item (click)="eliminarcuenta()">
+      <mat-icon>Eliminar</mat-icon>
+      <span>eliminar</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+
+
+
+</mat-toolbar>
